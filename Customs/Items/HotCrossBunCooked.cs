@@ -13,6 +13,8 @@ namespace EasterEggstravaganza.Customs.Items
 
         public override GameObject Prefab => Mod.Bundle.LoadAsset<GameObject>("HotCrossBunCooked").AssignMaterialsByNames();
 
+        public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
+
         public override List<Item.ItemProcess> Processes => new List<Item.ItemProcess>
         {
             new Item.ItemProcess

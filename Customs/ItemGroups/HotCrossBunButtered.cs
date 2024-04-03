@@ -15,6 +15,8 @@ namespace EasterEggstravaganza.Customs.Items
 
         public override ItemValue ItemValue => ItemValue.SideMedium;
 
+        public override ItemStorage ItemStorageFlags => ItemStorage.StackableFood;
+
         public override List<ItemGroup.ItemSet> Sets => new List<ItemGroup.ItemSet>
         {
             new ItemGroup.ItemSet

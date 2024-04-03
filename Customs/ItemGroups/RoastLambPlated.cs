@@ -21,6 +21,8 @@ namespace EasterEggstravaganza.Customs.ItemGroups
 
         public override ItemValue ItemValue => ItemValue.Large;
 
+        public override bool CanContainSide => true;
+
         public override List<ItemGroup.ItemSet> Sets => new List<ItemGroup.ItemSet>
         {
             new ItemGroup.ItemSet
