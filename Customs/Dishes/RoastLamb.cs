@@ -90,7 +90,7 @@ namespace EasterEggstravaganza.Customs.Dishes
 
         public override Dictionary<Locale, string> Recipe => new Dictionary<Locale, string>
         {
-            { Locale.English, "Add Lamb into tray, combine with Chopped Lemon, Peeled Garlic, and Oil. Cook, Serve" }
+            { Locale.English, "Add Lamb into tray, combine with Chopped Lemon, Peeled Garlic, and Oil. Cook, Serve.\nDon't forget to trash the messy tray!" }
         };
 
         public override List<(Locale, UnlockInfo)> InfoList => new List<(Locale, UnlockInfo)>
