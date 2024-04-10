@@ -24,13 +24,13 @@ namespace EasterEggstravaganza.Customs.Appliances
             {
                 Process = (Process)GDOUtils.GetExistingGDO(ProcessReferences.Cook),
                 IsAutomatic = true,
-                Speed = 1,
+                Speed = 1.5f,
                 Validity = ProcessValidity.Generic
             },
             new Appliance.ApplianceProcesses
             {
                 Process = (Process)GDOUtils.GetCustomGameDataObject<RequireBBQ>().GameDataObject,
-                IsAutomatic = true,
+                IsAutomatic = false,
                 Speed = 1.5f,
                 Validity = ProcessValidity.Generic
             }
@@ -45,7 +45,6 @@ namespace EasterEggstravaganza.Customs.Appliances
 
         public override List<Process> RequiresProcessForShop => new List<Process>
         {
-            (Process)GDOUtils.GetExistingGDO(ProcessReferences.Cook),
             (Process)GDOUtils.GetCustomGameDataObject<RequireBBQ>().GameDataObject
         };
 
@@ -57,7 +56,7 @@ namespace EasterEggstravaganza.Customs.Appliances
             (Locale.English, new ApplianceInfo
             {
                 Name = "BBQ",
-                Description = ""
+                Description = "Cooks Things!"
             })
         };
 

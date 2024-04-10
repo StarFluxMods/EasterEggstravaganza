@@ -4,9 +4,12 @@ using KitchenLib.Logging.Exceptions;
 using KitchenMods;
 using System.Linq;
 using System.Reflection;
+using EasterEggstravaganza.Customs.Processes;
 using KitchenData;
 using KitchenLib.Event;
 using KitchenLib.Interfaces;
+using KitchenLib.References;
+using KitchenLib.Utils;
 using TMPro;
 using UnityEngine;
 
@@ -16,7 +19,7 @@ namespace EasterEggstravaganza
     {
         public const string MOD_GUID = "com.starfluxgames.eastereggstravaganza";
         public const string MOD_NAME = "Easter Eggstravaganza";
-        public const string MOD_VERSION = "0.1.3";
+        public const string MOD_VERSION = "0.1.4";
         public const string MOD_AUTHOR = "StarFluxGames";
         public const string MOD_GAMEVERSION = ">=1.1.9";
 
@@ -54,6 +57,18 @@ namespace EasterEggstravaganza
                 if (!args.firstBuild) return;
 
                 args.gamedata.Get<Item>(-2080052245).IsIndisposable = true; // Temporary fix for the vanilla Lasagna Tray not being indisposable
+                
+                foreach (Appliance appliance in args.gamedata.Get<Appliance>()) // Allows Hobs and Ovens to spawn when BBQ is present (Applies to any appliance that has the Cook process)
+                {
+                    if (appliance.Processes.Count <= 0) continue;
+                    foreach (Appliance.ApplianceProcesses applianceProcesse in appliance.Processes)
+                    {
+                        if (applianceProcesse.Process != (Process)GDOUtils.GetExistingGDO(ProcessReferences.Cook)) continue;
+                        if (appliance.RequiresProcessForShop.Contains((Process)GDOUtils.GetCustomGameDataObject<RequireBBQ>().GameDataObject)) continue;
+                        appliance.RequiresProcessForShop.Add((Process)GDOUtils.GetCustomGameDataObject<RequireBBQ>().GameDataObject);
+                        break;
+                    }
+                }
             };
         }
     }
